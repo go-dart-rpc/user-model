@@ -18,9 +18,6 @@ jobs:
 
       - name: Go build
         run: go build -v ./...
-        
-      - name: Go test
-        run: go test -v ./...
       
       - name: Generating proto
         run: protoc proto/user.proto --go_out=plugins=grpc:.
