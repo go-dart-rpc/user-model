@@ -36,6 +36,6 @@ jobs:
         run: ls -al
 
       - name: Ls
-        run: ls -al /proto
+        run: ls -al proto/
         
       
