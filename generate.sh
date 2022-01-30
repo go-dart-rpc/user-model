@@ -1,8 +1,8 @@
 #!/bin/bash
 
 brew install protobuf 
-go get -u google.golang.org/grpc
-go get -u github.com/golang/protobuf/protoc-gen-go
+go get -d -u google.golang.org/grpc
+go get -d -u google.golang.org/protobuf
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
