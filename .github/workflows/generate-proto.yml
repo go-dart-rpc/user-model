@@ -26,8 +26,10 @@ jobs:
           go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
       - name: Generating protos
+        id: generate-proto
         run: |
           protoc -I=$PROTO_DIR --go_out=$GEN_OUT_DIR $(find $PROTO_DIR -type f -name '*.proto')
+          echo ::set-output name=exit_code::$?
         env:
           GEN_OUT_DIR: ./
           PROTO_DIR: proto
@@ -43,10 +45,12 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add proto go.sum go.mod
           git commit -m "New model generation"
+        if: steps.generate-proto.outputs.exit_code == 0
       
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
+        if: steps.generate-proto.outputs.exit_code == 0
       
