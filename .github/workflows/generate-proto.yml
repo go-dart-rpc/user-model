@@ -29,7 +29,7 @@ jobs:
         run: |
           protoc -I=$PROTO_DIR --go_out=$GEN_OUT_DIR $(find $PROTO_DIR -type f -name '*.proto')
         env:
-          GEN_OUT_DIR: proto
+          GEN_OUT_DIR: ./
           PROTO_DIR: proto
 
       - name: Ls
