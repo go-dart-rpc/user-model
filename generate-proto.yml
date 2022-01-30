@@ -1,0 +1,31 @@
+name: Generate Proto
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+
+      - name: Go build
+        run: go build -v ./...
+        
+      - name: Go test
+        run: go test -v ./...
+      
+      - name: Generating proto
+        run: protoc proto/user.proto --go_out=plugins=grpc:.
+        
+      - name: Ls
+        run: ls -al
+        
+      
