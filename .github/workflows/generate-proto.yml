@@ -33,6 +33,11 @@ jobs:
         env:
           GEN_OUT_DIR: ./
           PROTO_DIR: proto
+          
+      - name: Go install dependencies
+        run: |
+          ls -al
+          ls -al proto/
 
       - name: Commit files
         run: |
