@@ -28,7 +28,7 @@ jobs:
 
       - name: Generating protos
         run: |
-          protoc -I=proto --go_out=proto proto/addressbook.proto
+          protoc -I=proto --go_out=proto proto/user.proto
 
       - name: Ls
         run: ls -al
