@@ -28,10 +28,7 @@ jobs:
 
       - name: Generating protos
         run: |
-          protoc -I=$SRC_DIR --go_out=$DST_DIR $(find $SRC_DIR -type f -name '*.proto')
-        env:
-          DST_DIR: proto
-          SRC_DIR: proto
+          protoc proto/user.proto --go_out=plugins=grpc:.
 
       - name: Ls
         run: ls -al
