@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -18,12 +18,11 @@ jobs:
 
       - name: Go install dependencies
         run: |
+          brew install protobuf
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
           go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
           export PATH="$PATH:$(go env GOPATH)/bin"
-          chmod +x protoc
 
-      
       - name: Generating proto
         run: protoc proto/user.proto --go_out=plugins=grpc:.
         
