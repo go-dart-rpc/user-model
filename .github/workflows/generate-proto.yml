@@ -26,10 +26,17 @@ jobs:
           export GOBIN=$GOPATH/bin
           export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN
 
-      - name: Generating proto
-        run: protoc proto/user.proto --go_out=plugins=grpc:.
-        
+      - name: Generating protos
+        run: |
+          protoc -I=$SRC_DIR --go_out=$DST_DIR $(find $SRC_DIR -type f -name '*.proto')
+        env:
+          DST_DIR: proto
+          SRC_DIR: proto
+
       - name: Ls
         run: ls -al
+
+      - name: Ls
+        run: ls -al /proto
         
       
