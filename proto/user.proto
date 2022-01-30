@@ -28,7 +28,7 @@ message ReadUserResponse {
 }
 
 message ListUserRequest {
-    string user_id = 1;
+
 }
 
 message ListUserResponse {
