@@ -31,6 +31,11 @@ jobs:
         env:
           GEN_OUT_DIR: ./
           PROTO_DIR: proto
+          
+      - name: Ls
+        run: |
+          ls -al
+          ls -al proto/
 
       - name: Commit files
         run: |
