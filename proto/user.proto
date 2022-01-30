@@ -9,7 +9,6 @@ message User {
     string last_name = 3;
     string email = 4;
     string gender = 5;
-    int32 age = 6;
 }
 
 message CreateUserRequest {
