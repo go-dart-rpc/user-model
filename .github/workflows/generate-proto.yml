@@ -31,13 +31,8 @@ jobs:
           protoc -I=$PROTO_DIR --go_out=$GEN_OUT_DIR --go_opt=paths=source_relative --go-grpc_out=$GEN_OUT_DIR --go-grpc_opt=paths=source_relative $(find $PROTO_DIR -type f -name '*.proto')
           echo ::set-output name=exit_code::$?
         env:
-          GEN_OUT_DIR: ./
+          GEN_OUT_DIR: proto
           PROTO_DIR: proto
-          
-      - name: Go install dependencies
-        run: |
-          ls -al
-          ls -al proto/
 
       - name: Commit files
         run: |
